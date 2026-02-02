@@ -1,6 +1,6 @@
 {
   "name": "leanprompt-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React client for LeanPrompt WebSocket communication",
   "author": "Youngjune Kwon <yjkwon@winm2m.com>",
   "type": "module",
