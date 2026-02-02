@@ -25,7 +25,7 @@ export interface LeanPromptStore {
 }
 
 export interface LeanPromptConfig {
-  baseUrl: string;
+  baseUrl?: string;
   clientId?: string;
   reconnectAttempts?: number;
   reconnectDelay?: number;

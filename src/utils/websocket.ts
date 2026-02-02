@@ -11,8 +11,20 @@ export class WebSocketManager {
   private connectionHandlers: Set<(status: 'disconnected' | 'connecting' | 'connected' | 'error') => void> = new Set();
 
   constructor(config: LeanPromptConfig) {
+    // Auto-detect baseUrl if not provided
+    let baseUrl = config.baseUrl;
+    if (!baseUrl) {
+      if (typeof window !== 'undefined') {
+        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        baseUrl = `${protocol}//${window.location.host}`;
+      } else {
+        // Fallback for server-side rendering
+        baseUrl = 'ws://localhost:3000';
+      }
+    }
+    
     this.config = {
-      baseUrl: config.baseUrl.replace(/\/$/, ''), // Remove trailing slash
+      baseUrl: baseUrl.replace(/\/$/, ''), // Remove trailing slash
       clientId: config.clientId || `client-${Math.random().toString(36).substr(2, 9)}`,
       reconnectAttempts: config.reconnectAttempts || 5,
       reconnectDelay: config.reconnectDelay || 1000,

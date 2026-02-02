@@ -46,7 +46,7 @@ const MyComponent = () => {
 const App = () => {
   return (
     <LeanPromptProvider config={{
-      baseUrl: 'ws://localhost:8000',
+      // baseUrl is optional - will auto-detect from current page
       clientId: 'my-app'
     }}>
       <MyComponent />
@@ -63,7 +63,7 @@ Wrap your app with this provider to enable LeanPrompt functionality.
 
 ```tsx
 <LeanPromptProvider config={{
-  baseUrl: 'ws://localhost:8000',
+  // baseUrl: optional - auto-detects from current page (ws://host or wss://host)
   clientId: 'my-client',
   reconnectAttempts: 5,
   reconnectDelay: 1000,
@@ -75,11 +75,16 @@ Wrap your app with this provider to enable LeanPrompt functionality.
 
 #### Config Options
 
-- `baseUrl`: WebSocket server URL (required)
+- `baseUrl`: WebSocket server URL (optional - auto-detects from current page protocol and host)
 - `clientId`: Unique client identifier (auto-generated if not provided)
 - `reconnectAttempts`: Number of reconnection attempts (default: 5)
 - `reconnectDelay`: Delay between reconnections in ms (default: 1000)
 - `debounceMs`: Debounce time for messages per path (default: 300)
+
+**Auto-detection**: When `baseUrl` is not provided, the client automatically uses:
+- `ws://current-host` for HTTP pages
+- `wss://current-host` for HTTPS pages
+- Falls back to `ws://localhost:3000` for server-side rendering
 
 ### useLeanPrompt Hook
 

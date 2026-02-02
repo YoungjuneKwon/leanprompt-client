@@ -132,9 +132,9 @@ export const ChatComponent: React.FC<{ path: string; title: string; description:
 };
 
 export const DemoApp: React.FC = () => {
-  // Configuration - change this to match your server
+  // Configuration - baseUrl is optional and will auto-detect
   const config = useMemo(() => ({
-    baseUrl: 'ws://localhost:8000',
+    // baseUrl: 'ws://localhost:8000', // Uncomment to override auto-detection
     clientId: 'demo-client',
     reconnectAttempts: 5,
     reconnectDelay: 1000,
