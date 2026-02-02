@@ -2,10 +2,11 @@
   "name": "leanprompt-client",
   "version": "0.1.0",
   "description": "React client for LeanPrompt WebSocket communication",
+  "author": "Youngjune Kwon <yjkwon@winm2m.com>",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc --declaration --emitDeclarationOnly --outDir dist && vite build",
     "preview": "vite preview",
     "test": "vitest",
     "test:e2e": "playwright test"

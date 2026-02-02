@@ -199,19 +199,7 @@ this.reconnectTimer = window.setTimeout(() => {
     }, delay);
   }
 
-  private setConnectionStatus(status: 'disconnected' | 'connecting' | 'connected' | 'error') {
-    this.connectionHandlers.forEach(handler => handler(status === 'connected'));
-  }
 
-  onMessage(handler: (response: WebSocketResponse) => void) {
-    this.messageHandlers.add(handler);
-    return () => this.messageHandlers.delete(handler);
-  }
-
-  onConnectionChange(handler: (connected: boolean) => void) {
-    this.connectionHandlers.add(handler);
-    return () => this.connectionHandlers.delete(handler);
-  }
 
   isConnected(): boolean {
     return this.ws?.readyState === WebSocket.OPEN;

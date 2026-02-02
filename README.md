@@ -4,12 +4,12 @@ A React client library for LeanPrompt WebSocket communication with state managem
 
 ## Features
 
-- 📡 WebSocket connection with automatic reconnection
-- 🎯 Path-based state management (context caching)
-- ⚡ Debounced message sending per path
-- 🔧 TypeScript support
-- 📦 Zustand for state management
-- 🧪 Playwright E2E tests included
+- WebSocket connection with automatic reconnection
+- Path-based state management (context caching)
+- Debounced message sending per path
+- TypeScript support
+- Zustand for state management
+- Playwright E2E tests included
 
 ## Installation
 
